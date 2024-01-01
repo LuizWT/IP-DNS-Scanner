@@ -1,6 +1,7 @@
 from requests import get
 import socket
 import os
+import logging
 
 #Tabela de cores ANSI
 COLORS = {
@@ -16,8 +17,158 @@ COLORS = {
     'INVTR': '\033[7m'        # Inverter cor
 }
 
+logging.basicConfig(filename='port_scan.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def check_services(alvo, port):
+    service = None
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.settimeout(1)
+            s.connect((alvo, port))
+            
+            if port == 21:
+                response = s.recv(1024)
+                if b'220' in response:
+                    service = "FTP"
+            
+            elif port == 25:
+                response = s.recv(1024)
+                if b'220' in response:
+                    service = "SMTP"
+            
+            elif port == 22:
+                response = s.recv(1024)
+                if b'SSH' in response:
+                    service = "SSH"
+            
+            if port == 80 or 8080:
+                s.sendall(b'GET / HTTP/1.1\r\nHost: example.com\r\n\r\n')
+                response = s.recv(1024)
+                if b'HTTP' in response:
+                    service = "HTTP"
+            
+            elif port == 110:
+                response = s.recv(1024)
+                if b'+OK' in response:
+                    service = "POP3"
+
+            elif port == 135:
+                response = s.recv(1024)
+                if b'DCE/RPC' in response:
+                    service = "DCE/RPC (Microsoft EndPoint Mapper)"
+
+            elif port == 137:
+                response = s.recv(1024)
+                if b'NetBIOS' in response:
+                    service = "NetBIOS Name Service"
+
+            elif port == 138:
+                response = s.recv(1024)
+                if b'NetBIOS' in response:
+                    service = "NetBIOS Datagram Service"
+
+            elif port == 139:
+                response = s.recv(1024)
+                if b'NetBIOS' in response:
+                    service = "NetBIOS Session Service"
+
+            elif port == 140:
+                response = s.recv(1024)
+                if b'EMFIS Data Service' in response:
+                    service = "EMFIS Data Service"
+
+            elif port == 143:
+                response = s.recv(1024)
+                if b'Internet Message Access Protocol (IMAP)' in response:
+                    service = "IMAP"
+
+            elif port == 144:
+                response = s.recv(1024)
+                if b'News' in response:
+                    service = "Usenet News"
+
+            elif port == 389:
+                response = s.recv(1024)
+                if b'LDAP' in response:
+                    service = "LDAP (Lightweight Directory Access Protocol)"
+
+            elif port == 443:
+                s.sendall(b'GET / HTTP/1.1\r\nHost: example.com\r\n\r\n')
+                response = s.recv(1024)
+                if b'HTTP' in response:
+                    service = "HTTPS"
+
+            elif port == 445:
+                response = s.recv(1024)
+                if b'SMB' in response:
+                    service = "SMB (Server Message Block)"
+
+            elif port == 1158:
+                response = s.recv(1024)
+                if b'Oracle' in response:
+                    service = "Oracle ORB Listener"
+
+            elif port == 1433:
+                response = s.recv(1024)
+                if b'Microsoft SQL Server' in response:
+                    service = "Microsoft SQL Server"
+
+            elif port == 1433:
+                response = s.recv(1024)
+                if b'Microsoft SQL Server' in response:
+                    service = "Microsoft SQL Server"
+
+            elif port == 1521:
+                response = s.recv(1024)
+                if b'Oracle' in response:
+                    service = "Oracle Database"
+
+            elif port == 3306:
+                response = s.recv(1024)
+                if b'MySQL' in response:
+                    service = "MySQL"
+            
+            elif port == 3389:
+                response = s.recv(1024)
+                if b'Remote Desktop Protocol (RDP)' in response:
+                    service = "Remote Desktop Protocol (RDP)"
+
+            elif port == 5432:
+                response = s.recv(1024)
+                if b'PostgreSQL' in response:
+                    service = "PostgreSQL"
+                
+            elif port == 5900:
+                response = s.recv(1024)
+                if b'VNC (Virtual Network Computing)' in response:
+                    service = "VNC (Virtual Network Computing)"
+                
+            elif port == 6667:
+                response = s.recv(1024)
+                if b'IRC (Internet Relay Chat)' in response:
+                    service = "IRC (Internet Relay Chat)"
+
+            elif port == 8888:
+                response = s.recv(1024)
+                if b'HTTP' in response:
+                    service = "HTTP Alternate (often used for web caching)"
+
+            elif port == 9000:
+                response = s.recv(1024)
+                if b'Cobalt Strike' in response:
+                    service = "CSlistener (commonly associated with Cobalt Strike)"
+
+                #adicionar mais portas aqui em breve
+            else:
+                service = 'Desconhecido'
+    except socket.error as e:
+        logging.error(f'Erro ao conectar a porta {port}: {e}')
+    return service
+
 
 def scan_ports(alvo):
     print(f'\n{COLORS["Nyellow"]}Scan iniciando... Por favor espere')
@@ -26,7 +177,13 @@ def scan_ports(alvo):
         client = socket.socket()
         client.settimeout(0.05)
         if client.connect_ex((alvo, port)) == 0:
+            logging.info(f'Porta {port} aberta')
+            service = check_services(alvo, port)
+            if service:
+                logging.info(f'Servico na porta {port}: {service}')
             print(f'{COLORS["Nyellow"]}Port {port}  {COLORS["Dgreen"]}...Open')
+        client.close()
+
 
 def main():
     clear()
@@ -97,7 +254,6 @@ def main():
             if opc not in ['1', '01', 'Port Scanner', '2', '02', 'DNS Resolver']:
                 print(f'{COLORS["Ired"]}!!! {COLORS["Nyellow"]}Opção Inválida {COLORS["Ired"]}!!!')
                 clear()
-
 
 if __name__ == "__main__":
     main()
