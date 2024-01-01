@@ -7,4 +7,5 @@ OBS: A API utilizada é a https://api.ipify.org/, utilizando o Response do tipo 
 
 Muito obrigado por usar minha ferramenta de scan para suas necessidades de verificação de portas e DNS. Espero que você ache útil e fácil de usar. Caso tenha alguma dúvida ou precisar de assistência, não hesite em mandar uma mensagem.
 No momento a ferramente é simples, mas futuramente será implementado outras funcionalidades.
-                                                                    att, LuizWT
+
+att, LuizWT
