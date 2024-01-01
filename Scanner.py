@@ -38,7 +38,7 @@ def main():
                               f'┃                      ┃\n'                    
                               f'┣┫{COLORS["Nyellow"]}[02]{COLORS["Dgreen"]} DNS Resolver{COLORS["Ired"]}    ┃\n'
                               f'┗━━━━━━━━━━━━━━━━━━━━━━┛\n'
-                              f'{COLORS["Twhite"]}>>> @LuizNsx64 on X')
+                              f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT on Discord')
 
 
         opc = str(input(f'Digite a opção que deseja:{COLORS["VRCRM"]} ')).strip()
@@ -55,7 +55,7 @@ def main():
    _\ \/ __/ _ `/ _ \/ _ \/ -_) __/
   /___/\__/\_,_/_//_/_//_/\__/_/   
                                    """)
-            print(f'{COLORS["Twhite"]}>>>>>>>>>> @LuizNsx64 on X <<<<<<<<<<'.center(50))
+            print(f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT on Discord'.center(50))
             while True:
                 alvo = input(f'\n{COLORS["Dgreen"]}Digite o IP/Domínio:{COLORS["VRCRM"]} ').strip()
                 if len(alvo) > 13 or len(alvo) < 10:
@@ -75,7 +75,7 @@ def main():
    / , _/ -_|_-< _ \/ / |/ / -_) __/
   /_/|_|\__/___|___/_/|___/\__/_/   
                                    """)
-            print('{:^50}'.format(f'{COLORS["Twhite"]}>>>>>>>>>> LuizNsx64 on X <<<<<<<<<<'))
+            print('{:^50}'.format(f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT on Discord'.center(50)))
             while True:
                 alvo = input(f'\n{COLORS["Dgreen"]}Digite o Domínio para DNS (http[s]):{COLORS["VRCRM"]} ').strip()
                 if 'http' not in alvo:
