@@ -195,7 +195,7 @@ def main():
     clear()
     while True:
         print(f'{COLORS["Ired"]}┏━━━━━━━━━━━━━━━━━━━━━━┓\n'
-              f'┃ {COLORS["Nyellow"]}[{COLORS["Iblue"]} PORT SCANNER 2.0 {COLORS["Nyellow"]}]{COLORS["Ired"]} ┃\n'
+              f'┃ {COLORS["Nyellow"]}[{COLORS["Iblue"]} SCANNER 2.0 {COLORS["Nyellow"]}]{COLORS["Ired"]} ┃\n'
               f'┃                      ┃\n'                     
               f'┣┫{COLORS["Nyellow"]}[01]{COLORS["Dgreen"]} Port Scanner{COLORS["Ired"]}    ┃\n'
               f'┃                      ┃\n'                    
