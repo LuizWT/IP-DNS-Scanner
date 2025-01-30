@@ -130,7 +130,6 @@ async def scan_ports(alvo):
         
         await asyncio.gather(*tasks)
     
-    # Mensagem final com cores preservadas
     print(f'\n{COLORS["Nyellow"]}Scan concluído!{COLORS["VRCRM"]}')
 
 def validar_dominio(dominio):
@@ -157,7 +156,7 @@ async def dns_resolver():
    / , _/ -_|_-< _ \/ / |/ / -_) __/
   /_/|_|\__/___|___/_/|___/\__/_/   
                                    """)
-    print('{:^50}'.format(f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT'.center(50)))
+    print('{:^50}'.format(f'{COLORS["Twhite"]}\n━━━━━━━━━━┫ @LuizWT'.center(50)))
     
     while True:
         alvo = input(f'\n{COLORS["Dgreen"]}Digite o Domínio para DNS (ex: example.com):{COLORS["VRCRM"]} ').strip()
@@ -202,7 +201,7 @@ def main():
               f'┃                      ┃\n'                    
               f'┣┫{COLORS["Nyellow"]}[02]{COLORS["Dgreen"]} DNS Resolver{COLORS["Ired"]}    ┃\n'
               f'┗━━━━━━━━━━━━━━━━━━━━━━┛\n'
-              f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT')
+              f'{COLORS["Twhite"]}\n━━━━━━━━━━┫ @LuizWT')
 
         opc = str(input(f'\nDigite a opção que deseja:{COLORS["VRCRM"]} ')).strip().lower()
 
@@ -218,7 +217,7 @@ def main():
    _\ \/ __/ _ `/ _ \/ _ \/ -_) __/
   /___/\__/\_,_/_//_/_//_/\__/_/   
                                    """)
-            print(f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT'.center(50))
+            print(f'{COLORS["Twhite"]}\n━━━━━━━━━━┫ @LuizWT'.center(50))
             
             while True:
                 alvo = input(f'\n{COLORS["Dgreen"]}Digite o IP/Domínio:{COLORS["VRCRM"]} ').strip()
