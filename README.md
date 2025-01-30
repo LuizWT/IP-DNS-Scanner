@@ -1,11 +1,55 @@
-Olá, bem-vindo(a) ao Scanner de IP e DNS! Esta ferramenta tem duas funcionalidades principais:
+# Scanner de IP e DNS
 
-Verificação de portas: Esta função permite que você verifique as portas abertas de um determinado endereço IP. Isso é feito enviando uma solicitação para o endereço IP nas portas e esperando uma resposta. Se uma resposta for recebida, a porta está aberta. Caso contrário, a porta está fechada.
+## Descrição
 
-Verificação de DNS: Esta função permite que você obtenha o endereço IP associado a um nome de domínio. Isso é feito enviando uma solicitação ao servidor DNS e esperando a resposta com o endereço IP correspondente. 
-OBS: A API utilizada é a https://api.ipify.org/, utilizando o Response do tipo 'text'.
+O **Scanner de IP e DNS** é uma ferramenta simples, mas poderosa, que permite realizar duas funções principais:
 
-Muito obrigado por usar minha ferramenta de scan para suas necessidades de verificação de portas e DNS. Espero que você ache útil e fácil de usar. Caso tenha alguma dúvida ou precisar de assistência, não hesite em mandar uma mensagem.
-No momento a ferramente é simples, mas futuramente será implementado outras funcionalidades.
+1. **Verificação de Portas**:  
+   Verifica se as portas de um endereço IP estão abertas ou fechadas. Envia solicitações para portas específicas e aguarda as respostas para determinar o estado da porta.
 
-att, LuizWT
+2. **Verificação de DNS**:  
+   Obtém o endereço IP correspondente a um nome de domínio, usando a API pública do [ipify](https://api.ipify.org/) para realizar a consulta.
+
+**Funcionalidades**:
+- Verificação de portas.
+- Resolução de DNS utilizando uma API confiável.
+- Simplicidade de uso com uma interface clara.
+
+<hr>
+
+## Instalação
+
+Clone o repositório para o seu diretório local:
+
+```bash
+git clone https://github.com/LuizWT/IP-DNS-Scanner.git ~/Scanner
+```
+
+Entre no projeto e instale as dependências:
+
+```bash
+cd ~/Scanner && pip3 install -r requirements.txt
+```
+
+Inicie a ferramenta:
+
+```bash
+python3 Scanner.py
+```
+
+## Saída
+
+  Após a varredura ser finalizada, o output ficará salvo em `Scanner/port_scan.log`
+
+<hr>
+
+## Apoio ao Projeto
+
+Se você quiser contribuir com o projeto, sinta-se à vontade para abrir Issues ou fazer Pull Requests no repositório oficial do projeto.
+  
+Quer apoiar ainda mais? Faça uma doação e ajude a manter este projeto vivo!
+
+**BTC Wallet**:  
+`bc1qfy534ujs9yekwthe063fck0zf7hel7paem6sxl`
+  
+<hr>
