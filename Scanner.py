@@ -202,9 +202,9 @@ def main():
               f'┃                      ┃\n'                    
               f'┣┫{COLORS["Nyellow"]}[02]{COLORS["Dgreen"]} DNS Resolver{COLORS["Ired"]}    ┃\n'
               f'┗━━━━━━━━━━━━━━━━━━━━━━┛\n'
-              f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT on Discord')
+              f'{COLORS["Twhite"]}━━━━━━━━━━┫ @LuizWT')
 
-        opc = str(input(f'Digite a opção que deseja:{COLORS["VRCRM"]} ')).strip().lower()
+        opc = str(input(f'\nDigite a opção que deseja:{COLORS["VRCRM"]} ')).strip().lower()
 
         if opc in ['1', '01', 'port scanner']:
             clear()
